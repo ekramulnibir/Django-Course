@@ -36,8 +36,36 @@
     <h3>{{empty_string | length}}</h3>
 
     <p>{{'Happy coding. I love to code' | truncatechars:13}}</p>
-   
+
+    <p>{{name | capfirst}}</p>
+
+    <p>{{name | cut:" "}}</p>
+    <p>{{empty_string | default:"Nothing"}}</p>
+    <p>{{courses | dictsort:"name"}}</p>
+
+    <p>{{courses | first}}</p>
+    <p>{{courses | last}}</p>
+
+    <p>{{name | lower}}</p>
+    <p>{{name | upper}}</p>
+
+    <p>{{name | make_list}}</p>
+    <p>{{name_char | random}}</p>
+    <p>{{name_char | slice:":4"}}</p>
+
+    <p>{{name | slugify}}</p>
+    <p>{{name | title}}</p>
+
+    <p>{{ name | wordcount }}</p>
+
+    <p> {{courses | length}}</p>
+    <p> {{name | length}}</p>
+
+    <p>{{date | time:"H:i"}}</p>
+
     
+
+
     
 </body>
 </html>
