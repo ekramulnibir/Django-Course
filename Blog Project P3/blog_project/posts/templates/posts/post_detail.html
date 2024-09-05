@@ -1,0 +1,50 @@
+{% extends "base.html" %} {% load crispy_forms_tags %} 
+{% block title %} Post Page{% endblock title %} 
+{% block content %}
+
+<div class="col-12">
+  <div class="card mx-2">
+    <div class="card-body">
+      <img src="{{post.image.url}}" class="card-img-top" alt="" style="width: 50%;" />
+      <h5 class="card-title"><h1>{{post.title}}</h1></h5>
+      <p class="card-text">{{ post.content}}</p>
+      <p>Author:{{post.author.first_name}} {{post.author.last_name}}</p>
+      <p>
+        Category: {% for cat in post.category.all %}
+        <button
+          class="btn btn-sm m-1"
+          style="background-color: #ff6f61; color: white"
+        >
+          {{ cat.name }}
+        </button>
+        {% endfor %}
+      </p>
+
+    </div>
+  </div>
+</div>
+
+<div class="card mx-4 mt-4">
+    <h5> Total Comments: {{comments | length}}</h5>
+    {% for comment in comments %}
+    <div class="card-body border m-2">
+        
+        <p><b>{{comment.name}}</b> {{comment.created_on}}</p>
+        <p>{{comment.body}}</p>
+        
+    </div>
+    {% endfor %}
+</div>
+
+<div class="card mx-4  mt-4">
+    <div class="card-body">
+        <form action="" method="post">
+            {% csrf_token %}
+            <h1>Add Commnet</h1>
+            {{comment_form | crispy}}
+            <input class="btn btn-info" type="submit" value="Commnet">
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
